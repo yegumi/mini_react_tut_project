@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Egyptian Hieroglyphs",
+    "period": "c. 3200 BCE – 400 CE",
+    "region": "Ancient Egypt",
+    "type": "Logographic",
+    "direction": "Variable",
+    "description": "The ancient Egyptian writing system using signs representing words, sounds, and concepts.",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.LdoovCcU7yrTinCBYD1PrgHaEO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 2,
+    "name": "Cuneiform",
+    "period": "c. 3400 BCE – 100 CE",
+    "region": "Mesopotamia",
+    "type": "Logo-syllabic",
+    "direction": "Left to right",
+    "description": "One of the earliest known systems of writing, developed in ancient Mesopotamia.",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Phoenician",
+    "period": "c. 1050 – 150 BCE",
+    "region": "Eastern Mediterranean",
+    "type": "Alphabet",
+    "direction": "Right to left",
+    "description": "An ancient consonantal alphabet that influenced several later writing systems.",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "Ancient Greek",
+    "period": "c. 800 BCE onward",
+    "region": "Ancient Greece",
+    "type": "Alphabet",
+    "direction": "Left to right",
+    "description": "The writing system of ancient Greek, notable for explicitly representing vowel sounds.",
+    "image": ""
+  }
+]

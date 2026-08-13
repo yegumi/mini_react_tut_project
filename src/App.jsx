@@ -1,29 +1,24 @@
-import './App.css';
-import Home from './pages/home';
-import { Route, Routes } from 'react-router-dom';
-import Favorites from './pages/favorites';
-import Navbar from './components/navbar';
+import "./assets/css/app.css"
+import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/navbar";
+
+import Home from "./pages/home";
+import Cards from "./pages/card";
+import CardDetails from "./pages/cardDetail";
 
 function App() {
-  return(
+  return (
     <>
-    <div>
-      <Navbar/>
+      <Navbar />
+
       <Routes>
-        <Route path='/' element = {<Home/>}/>
-        <Route path='/favorites' element= {<Favorites/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/cards" element={<Cards />} />
+        <Route path="/cards/:id" element={<CardDetails />} />
       </Routes>
-      
-     
-    </div>
-
-
     </>
   );
 }
 
-
-
 export default App;
-
-
