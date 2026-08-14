@@ -6,12 +6,14 @@ function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-logo">
-        Ancient Scripts
+      Logomi
       </Link>
 
       <div className="navbar-links">
         <Link to="/">Home</Link>
         <Link to="/cards">Scripts</Link>
+        <Link to="/favorites">favorites</Link>
+
       </div>
     </nav>
   );

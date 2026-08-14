@@ -1,74 +1,77 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  background: #f5f1e9;
-  color: #302e29;
-  font-family: Georgia, "Times New Roman", serif;
+    margin: 0;
+    background: #DCEAF2;
+    color: #263746;
+    font-family: Georgia, "Times New Roman", serif;
 }
 
 .hero {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 100px 24px 70px;
-  text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 100px 24px 70px;
+    text-align: center;
 }
 
 .hero-label {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  color: #8a6f47;
-  margin-bottom: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: #B03A6F;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-  margin: 0;
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  line-height: 0.95;
-  font-weight: 500;
+    margin: 0;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 0.95;
+    font-weight: 500;
 }
 
 .hero h1 span {
-  font-style: italic;
+    font-style: italic;
 }
 
 .hero-description {
-  max-width: 520px;
-  margin: 30px auto 0;
-  color: #6c665d;
-  line-height: 1.7;
-  font-size: 1.05rem;
+    max-width: 520px;
+    margin: 30px auto 0;
+    color: #536675;
+    line-height: 1.7;
+    font-size: 1.05rem;
 }
 
 .cards-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px 5% 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 5% 100px;
 }
 
 .cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+.page-content {
+    flex: 1;
 }
 
 @media (max-width: 1000px) {
-  .cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 700px) {
-  .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
 }
 
 @media (max-width: 450px) {
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
 }

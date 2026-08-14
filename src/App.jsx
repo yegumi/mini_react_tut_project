@@ -6,17 +6,29 @@ import Navbar from "./components/navbar";
 import Home from "./pages/home";
 import Cards from "./pages/card";
 import CardDetails from "./pages/cardDetail";
+import Favorite from "./pages/favorites";
+import Footer from "./components/footer";
 
 function App() {
   return (
     <>
       <Navbar />
 
+
+    <main className="page-content">
+      
       <Routes>
+
+
         <Route path="/" element={<Home />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/cards/:id" element={<CardDetails />} />
+        <Route path="/favorites" element={<Favorite />} />
+
       </Routes>
+    </main>
+      
+      <Footer/>
     </>
   );
 }

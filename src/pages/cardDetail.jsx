@@ -1,4 +1,6 @@
+import "../assets/css/carddetails.css";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import cards from "../data/cards.json";
 
 function CardDetails() {
@@ -7,6 +9,39 @@ function CardDetails() {
     const card = cards.find(
         (card) => card.id === Number(id)
     );
+
+    const [isFavorite, setIsFavorite] = useState(() => {
+        const savedFavorites = localStorage.getItem("favorites");
+
+        if (!savedFavorites) {
+            return false;
+        }
+
+        const favorites = JSON.parse(savedFavorites);
+
+        return favorites.includes(Number(id));
+    });
+
+    function addToFavorites() {
+        const savedFavorites = localStorage.getItem("favorites");
+
+        const favorites = savedFavorites
+            ? JSON.parse(savedFavorites)
+            : [];
+
+        if (favorites.includes(card.id)) {
+            return;
+        }
+
+        favorites.push(card.id);
+
+        localStorage.setItem(
+            "favorites",
+            JSON.stringify(favorites)
+        );
+
+        setIsFavorite(true);
+    }
 
     if (!card) {
         return (
@@ -19,32 +54,26 @@ function CardDetails() {
 
     return (
         <main>
-              <img
-            src={card.image}
-            alt={card.name}
-            className="card-details-image"
-        />
+            <img
+                src={card.image}
+                alt={card.name}
+                className="card-details-image"
+            />
+
             <h1>{card.name}</h1>
 
-            <p>{card.description}</p>
+            <p>
+                <strong>Type:</strong> {card.type}
+            </p>
 
-            <div>
-                <p>
-                    <strong>Period:</strong> {card.period}
-                </p>
-
-                <p>
-                    <strong>Region:</strong> {card.region}
-                </p>
-
-                <p>
-                    <strong>Type:</strong> {card.type}
-                </p>
-
-                <p>
-                    <strong>Direction:</strong> {card.direction}
-                </p>
-            </div>
+            <button
+                onClick={addToFavorites}
+                disabled={isFavorite}
+            >
+                {isFavorite
+                    ? "Already in your favorites ♥"
+                    : "Add to Favorites"}
+            </button>
         </main>
     );
 }
