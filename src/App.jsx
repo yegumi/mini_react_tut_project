@@ -8,6 +8,7 @@ import Cards from "./pages/card";
 import CardDetails from "./pages/cardDetail";
 import Favorite from "./pages/favorites";
 import Footer from "./components/footer";
+import Register from "./pages/register"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/cards" element={<Cards />} />
         <Route path="/cards/:id" element={<CardDetails />} />
         <Route path="/favorites" element={<Favorite />} />
+        <Route path="/register" element={<Register />} />
 
       </Routes>
     </main>
