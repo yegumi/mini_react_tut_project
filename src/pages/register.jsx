@@ -1,19 +1,35 @@
-import { useState} from "react";
+import { useState } from "react";
 import "../assets/css/register.css"
-function Register(){
+
+function Register() {
     const [form, setForm] = useState(
-        {name:"",
-         username:"",
-         email:"",
-         birthdate:""   
+        { name: "",
+          username: "",
+          email: "",
+          birthdate: "",
+          password: "",
+          confirmPassword: ""
         }
     );
-    function HandleChange(event){
-    const {name, value}= event.target
-    setForm({...form, [name]:value})}
-    function HandleSubmit(event){
-        event.preventDefault();
+    const [error, setError] = useState("");
+
+    function HandleChange(event) {
+        const { name, value } = event.target
+        setForm({ ...form, [name]: value })
     }
+
+    function HandleSubmit(event) {
+        event.preventDefault();
+
+        if (form.password !== form.confirmPassword) {
+            setError("Passwords don't match");
+            return;
+        }
+
+        setError("");
+        // continue with your actual submit logic here
+    }
+
     return (
         <div className="register-section">
             <h1> Hey are you new here?</h1>
@@ -24,10 +40,37 @@ function Register(){
                  </p>
                  <h3>So what do you say? wanna join us?^.^</h3>
                  <form onSubmit={HandleSubmit}>
-                    <input type="text" name="name" placeholder="name" value={form.name} onChange={HandleChange}></input>
-                    <input type="text" name="username" placeholder="username" value={form.username}onChange={HandleChange}></input>
-                    <input type="email" name="email" placeholder="email" value={form.email}onChange={HandleChange}></input>
-                    <input type="date"  name="birthdate" value={form.birthdate} onChange={HandleChange}></input>
+                    <div className="field-group">
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="name" value={form.name} onChange={HandleChange} />
+                    </div>
+
+                    <div className="field-group">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="username" value={form.username} onChange={HandleChange} />
+                    </div>
+
+                    <div className="field-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="email" value={form.email} onChange={HandleChange} />
+                    </div>
+
+                    <div className="field-group">
+                        <label>Birthdate</label>
+                        <input type="date" name="birthdate" value={form.birthdate} onChange={HandleChange} />
+                    </div>
+
+                    <div className="field-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="set a new password" value={form.password} onChange={HandleChange} />
+                    </div>
+
+                    <div className="field-group">
+                        <label>Confirm password</label>
+                        <input type="password" name="confirmPassword" placeholder="confirm password" value={form.confirmPassword} onChange={HandleChange} />
+                    </div>
+
+                    {error && <p className="form-error">{error}</p>}
 
                     <button type="submit"> create account</button>
                  </form>
