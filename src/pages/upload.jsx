@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "../assets/css/upload.css"
 const allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
 
 function Upload(){
+    const fileInputRef = useRef(null)
     const [logo, setLogo] = useState(null);
     const [previewurl, setPreviewUrl] = useState(null);
     const [error, setError] = useState("");
+    
 
     function HandleFileChange(event){
         const file = event.target.files[0]; // we only take one logo each time
@@ -30,6 +32,11 @@ function Upload(){
             return;
         }
         // no backend yet
+        setLogo(null);
+        setPreviewUrl(null);
+        setError("");
+        fileInputRef.current.value = "";
+
 
     }
 
@@ -40,7 +47,8 @@ function Upload(){
                 Upload your logo
             </h1>
             <form onSubmit={HandleSubmit}>
-                <input type='file' 
+                <input type='file'
+                ref={fileInputRef} 
                 placeholder="choose from your local storage"
                 accept=".jpg, .jpeg, .png, .svg"
                 onChange={HandleFileChange}/>
