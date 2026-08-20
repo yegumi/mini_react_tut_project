@@ -10,6 +10,7 @@ import Favorite from "./pages/favorites";
 import Footer from "./components/footer";
 import Register from "./pages/register";
 import Login from "./pages/login";
+import Upload from "./pages/upload";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
         <Route path="/favorites" element={<Favorite />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/upload"element={<Upload/>} />
+
 
       </Routes>
     </main>

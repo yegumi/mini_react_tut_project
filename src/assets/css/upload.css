@@ -1,0 +1,154 @@
+.upload-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    position: relative;
+}
+
+.upload-section::before {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    filter: blur(60px);
+    background: rgba(176, 58, 111, 0.18);
+    top: -60px;
+    left: -100px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.upload-section::after {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    filter: blur(60px);
+    background: rgba(140, 190, 210, 0.35);
+    bottom: -40px;
+    right: -80px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.upload-section h1 {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    font-weight: 500;
+    margin: 0 0 28px;
+}
+
+.upload-section form {
+    position: relative;
+    z-index: 1;
+    max-width: 420px;
+    width: 100%;
+    background: #ffffff;
+    padding: 44px 40px;
+    border-radius: 28px;
+    box-shadow:
+        0 20px 50px rgba(38, 55, 70, 0.12),
+        0 0 0 1px rgba(220, 234, 242, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* file input, styled as a soft dashed dropzone-looking button */
+.upload-section input[type="file"] {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: #536675;
+    padding: 24px 18px;
+    border: 1.5px dashed #DCEAF2;
+    border-radius: 16px;
+    background: #F7FBFD;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.upload-section input[type="file"]:hover {
+    border-color: #B03A6F;
+    background: #ffffff;
+}
+
+/* the little "Choose File" button browsers render inside the input */
+.upload-section input[type="file"]::file-selector-button {
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    margin-right: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #B03A6F;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.upload-section input[type="file"]::file-selector-button:hover {
+    background: #8f2e5a;
+}
+
+.logo-preview {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 16px;
+    border: 1.5px solid #DCEAF2;
+    background: #F7FBFD;
+    padding: 12px;
+}
+
+.upload-section button[type="submit"] {
+    width: 100%;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 16px 18px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #B03A6F, #8f2e5a);
+    color: #ffffff;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.upload-section button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(176, 58, 111, 0.3);
+}
+
+.upload-section button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 450px) {
+    .upload-section form {
+        padding: 28px 24px;
+        border-radius: 20px;
+    }
+}
+.form-error {
+    color: #8f2e5a;
+    background: rgba(176, 58, 111, 0.1);
+    border: 1.5px solid rgba(176, 58, 111, 0.35);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}

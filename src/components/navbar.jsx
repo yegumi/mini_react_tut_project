@@ -14,6 +14,7 @@ function Navbar() {
         <Link to="/favorites">favorites</Link>
         <Link to="/register">New User?</Link>
         <Link to="/login">sign in?</Link>
+        <Link to="/upload">wanna share a new logo?</Link>
 
 
       </div>
