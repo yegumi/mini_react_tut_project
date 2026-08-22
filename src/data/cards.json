@@ -3,6 +3,44 @@
     "id": 1,
     "name": "yeganeh",
     "type": "alphabetic",
-    "image": "/logos/yeganeh.png"
+    "image": "/logos/yeganeh.png",
+    "date":"will be handled in backend later",
+    "description":"any caption",
+    "user":"admin",
+    "likes":0
   }
+  ,
+    {
+    "id": 2,
+    "name": "ginny",
+    "type": "alphabetic",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.ozhbFOuWooxDHb16gdKdwgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "date":"will be handled in backend later",
+    "description":"any caption",
+    "user":"ginny_232",
+     "likes":0
+  },
+    {
+    "id": 3,
+    "name": "active",
+    "type": "alphabetic",
+    "image": "https://graphicsfamily.com/wp-content/uploads/2020/10/Professional-Company-Logo-Design-on-Paper-Mockups-2048x1311.jpg",
+    "date":"will be handled in backend later",
+    "description":"i was just bored and I came up with this",
+    "user":"Dean",
+     "likes":0
+  },
+  
+  {
+    "id": 4,
+    "name": "anything",
+    "type": "alphabetic",
+    "image": "https://th.bing.com/th/id/OIP.VjbgjECCVk1kM-0rGjZDGAHaHa?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "date":"will be handled in backend later",
+    "description":"any caption",
+    "user":"admin",
+     "likes":0
+  }
+  
+  
 ]

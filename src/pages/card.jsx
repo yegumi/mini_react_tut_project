@@ -15,7 +15,9 @@ function Card({ card }) {
 
       <div className="card-content">
         <h2>{card.name}</h2>
-        <p>{card.definition}</p>
+        <h3>creator : {card.user}</h3>
+        <h4>uploaded on : {card.date}</h4>
+       
         <Link
                     to={`/cards/${card.id}`}
                     className="card-details-button"

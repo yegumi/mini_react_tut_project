@@ -1,0 +1,64 @@
+.post-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.post-thumb {
+    position: relative;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(38, 55, 70, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-thumb:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(38, 55, 70, 0.14);
+}
+
+.post-thumb img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.like-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: #536675;
+    background: #F7FBFD;
+    border: none;
+    border-top: 1px solid #DCEAF2;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.like-button:hover {
+    background: #ffffff;
+}
+
+@media (max-width: 750px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+}
+
+@media (max-width: 420px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+    }
+}

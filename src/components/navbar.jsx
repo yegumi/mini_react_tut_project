@@ -15,6 +15,7 @@ function Navbar() {
         <Link to="/register">New User?</Link>
         <Link to="/login">sign in?</Link>
         <Link to="/upload">wanna share a new logo?</Link>
+        <Link to="/profile">profile</Link>
 
 
       </div>

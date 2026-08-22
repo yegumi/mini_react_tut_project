@@ -1,10 +1,11 @@
 import "../assets/css/carddetails.css";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import cards from "../data/cards.json";
+import { useState,useContext  } from "react";
+import { PostContext } from "../context/PostsContext";
 
 function CardDetails() {
     const { id } = useParams();
+    const {cards, ToggleLike, likedCardIds} = useContext(PostContext);
 
     const card = cards.find(
         (card) => card.id === Number(id)
@@ -61,6 +62,10 @@ function CardDetails() {
             />
 
             <h1>{card.name}</h1>
+            <h2>{card.user}</h2>
+            <h3>{card.description}</h3>
+            <h4>{card.date}</h4>
+
 
             <p>
                 <strong>Type:</strong> {card.type}
@@ -74,6 +79,10 @@ function CardDetails() {
                     ? "Already in your favorites ♥"
                     : "Add to Favorites"}
             </button>
+            <button onClick={() => ToggleLike(card.id)} className="like-button">
+                      {likedCardIds.includes(card.id) ? "❤️" : "🤍"} {card.likes}
+                </button>
+              
         </main>
     );
 }

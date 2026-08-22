@@ -11,10 +11,12 @@ import Footer from "./components/footer";
 import Register from "./pages/register";
 import Login from "./pages/login";
 import Upload from "./pages/upload";
-
+import ProfileGrid from "./pages/profile";
+import { PostProvider } from "./context/PostsContext";
 function App() {
   return (
     <>
+    <PostProvider>
       <Navbar />
 
 
@@ -30,12 +32,14 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/upload"element={<Upload/>} />
+        <Route path="/profile"element={<ProfileGrid/>} />
 
 
       </Routes>
     </main>
       
       <Footer/>
+       </PostProvider>
     </>
   );
 }

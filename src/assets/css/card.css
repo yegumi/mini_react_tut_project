@@ -1,9 +1,16 @@
+
+
 .lenormand-card {
+  width: 280px;
+  box-sizing: border-box;
+
   background: #fffdf8;
   border: 1px solid #ded7c8;
   border-radius: 14px;
   overflow: hidden;
+
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
@@ -14,9 +21,16 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
 }
 
+
+/* =========================
+   CARD IMAGE
+   ========================= */
+
 .card-image-container {
   position: relative;
+  width: 100%;
   aspect-ratio: 4 / 3;
+
   overflow: hidden;
   background: #eee8dc;
 }
@@ -24,12 +38,19 @@
 .card-image {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
   display: block;
 }
 
+
+/* =========================
+   CARD NUMBER
+   ========================= */
+
 .card-number {
   position: absolute;
+
   top: 10px;
   left: 10px;
 
@@ -47,18 +68,120 @@
   font-weight: 600;
 }
 
+
+/* =========================
+   CARD CONTENT
+   ========================= */
+
 .card-content {
   padding: 18px;
 }
 
 .card-content h2 {
   margin: 0 0 8px;
+
   font-size: 1.2rem;
+}
+
+.card-content h3 {
+  margin: 0 0 6px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #625d54;
+}
+
+.card-content h4 {
+  margin: 0 0 16px;
+
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #817a70;
 }
 
 .card-content p {
   margin: 0;
+
   color: #625d54;
   line-height: 1.6;
   font-size: 0.95rem;
+}
+
+
+/* =========================
+   DETAILS BUTTON
+   ========================= */
+
+.card-details-button {
+  display: inline-block;
+
+  padding: 9px 16px;
+
+  border-radius: 8px;
+
+  background: #d94f8a;
+  color: white;
+
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card-details-button:hover {
+  background: #c43f78;
+  transform: translateY(-2px);
+}
+
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 280px);
+  gap: 28px;
+
+  width: 100vw;
+
+  justify-content: center;
+
+  margin-left: calc(50% - 50vw);
+
+  padding: 60px 0 100px;
+
+  box-sizing: border-box;
+}
+
+
+
+
+@media (max-width: 1250px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 280px);
+  }
+}
+
+
+
+@media (max-width: 920px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 280px);
+    gap: 20px;
+  }
+}
+
+
+
+
+@media (max-width: 620px) {
+  .cards-grid {
+    grid-template-columns: minmax(0, 1fr);
+
+    width: calc(100% - 32px);
+
+    margin: 0 16px;
+
+    gap: 16px;
+  }
 }
