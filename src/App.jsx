@@ -13,10 +13,13 @@ import Login from "./pages/login";
 import Upload from "./pages/upload";
 import ProfileGrid from "./pages/profile";
 import { PostProvider } from "./context/PostsContext";
+import { SaveProvider } from "./context/saveContexts";
+
 function App() {
   return (
     <>
     <PostProvider>
+      <SaveProvider>
       <Navbar />
 
 
@@ -39,6 +42,7 @@ function App() {
     </main>
       
       <Footer/>
+      </SaveProvider>
        </PostProvider>
     </>
   );

@@ -2,47 +2,18 @@ import "../assets/css/carddetails.css";
 import { useParams } from "react-router-dom";
 import { useState,useContext  } from "react";
 import { PostContext } from "../context/PostsContext";
+import { SaveContext } from "../context/saveContexts";
 
 function CardDetails() {
     const { id } = useParams();
     const {cards, ToggleLike, likedCardIds} = useContext(PostContext);
+    const {saveToggle, usersavedItems} = useContext(SaveContext);
 
     const card = cards.find(
         (card) => card.id === Number(id)
     );
 
-    const [isFavorite, setIsFavorite] = useState(() => {
-        const savedFavorites = localStorage.getItem("favorites");
-
-        if (!savedFavorites) {
-            return false;
-        }
-
-        const favorites = JSON.parse(savedFavorites);
-
-        return favorites.includes(Number(id));
-    });
-
-    function addToFavorites() {
-        const savedFavorites = localStorage.getItem("favorites");
-
-        const favorites = savedFavorites
-            ? JSON.parse(savedFavorites)
-            : [];
-
-        if (favorites.includes(card.id)) {
-            return;
-        }
-
-        favorites.push(card.id);
-
-        localStorage.setItem(
-            "favorites",
-            JSON.stringify(favorites)
-        );
-
-        setIsFavorite(true);
-    }
+  
 
     if (!card) {
         return (
@@ -72,16 +43,14 @@ function CardDetails() {
             </p>
 
             <button
-                onClick={addToFavorites}
-                disabled={isFavorite}
-            >
-                {isFavorite
-                    ? "Already in your favorites ♥"
-                    : "Add to Favorites"}
+                onClick={()=> saveToggle(card.id)} className= "save-button">
+            
+                {usersavedItems.includes(card.id) ? "⭐ remove from favorites" : "☆ add to favorites"} add to favorite
             </button>
             <button onClick={() => ToggleLike(card.id)} className="like-button">
                       {likedCardIds.includes(card.id) ? "❤️" : "🤍"} {card.likes}
                 </button>
+            
               
         </main>
     );

@@ -1,13 +1,12 @@
 import cards from "../data/cards.json";
 import { Link } from "react-router-dom";
+import { SaveContext } from "../context/saveContexts";
+import { useContext } from "react";
 
 function Favorite() {
-    const favorites =
-        JSON.parse(localStorage.getItem("favorites")) || [];
+    const {saveToggle, usersavedItems} = useContext(SaveContext);
 
-    const favoriteCards = cards.filter(
-        (card) => favorites.includes(card.id)
-    );
+    const favoriteCards = cards.filter((card)=> usersavedItems.includes(card.id));
 
     return (
         <main>

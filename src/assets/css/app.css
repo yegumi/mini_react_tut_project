@@ -12,20 +12,20 @@ body {
 .hero {
     max-width: 900px;
     margin: 0 auto;
-    padding: 100px 24px 70px;
+    padding: 10px 10px 30px;
     text-align: center;
 }
 
 .hero-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: 2.5rem;
+    letter-spacing: 0.01em;
     color: #B03A6F;
     margin-bottom: 20px;
 }
 
 .hero h1 {
-    margin: 0;
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    margin:0 0 20px;
+    font-size: clamp(3rem, 9vw, 7rem);
     line-height: 0.95;
     font-weight: 500;
 }
@@ -42,6 +42,12 @@ body {
     font-size: 1.05rem;
 }
 
+.hero h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 400;
+    color: #536675;
+    margin: 0 0 16px;
+}
 .cards-section {
     max-width: 1400px;
     margin: 0 auto;
