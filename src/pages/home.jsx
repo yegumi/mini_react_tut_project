@@ -7,8 +7,8 @@ function Home() {
     useEffect(() => {
         async function fetchCards() {
             const response = await fetch("http://127.0.0.1:8000/api/cards/");
-            const cards = await response.json();
-            setCards(cards);
+            const data = await response.json();
+            setCards(data);
         }
 
         fetchCards();

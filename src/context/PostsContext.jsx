@@ -1,11 +1,21 @@
-import { createContext, useState} from "react";
-import cardsData from "../data/cards.json";
+import { createContext, useState, useEffect} from "react";
+
 
 export const PostContext = createContext();
 
 export function PostProvider({children}){
-    const [cards, setCards] = useState(cardsData);
+    const [cards, setCards] = useState([]);
     const [likedCardIds, setLikeCardIds] = useState([]);
+
+    useEffect(() => {
+        async function fetchCards() {
+            const response = await fetch("http://127.0.0.1:8000/api/cards/");
+            const data = await response.json();
+            setCards(data);
+        }
+
+        fetchCards();
+    }, []);
 
 
     function ToggleLike(cardId){
