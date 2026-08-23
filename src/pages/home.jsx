@@ -1,7 +1,18 @@
 import Card from "./card";
-import cards from "../data/cards.json"
+import { useState, useEffect } from "react";
 
 function Home() {
+    const [cards, setCards] = useState([])
+
+    useEffect(() => {
+        async function fetchCards() {
+            const response = await fetch("http://127.0.0.1:8000/api/cards/");
+            const cards = await response.json();
+            setCards(cards);
+        }
+
+        fetchCards();
+    }, []);
     
     return (
    <main>
