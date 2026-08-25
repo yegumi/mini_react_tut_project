@@ -14,6 +14,7 @@ import Upload from "./pages/upload";
 import ProfileGrid from "./pages/profile";
 import { PostProvider } from "./context/PostsContext";
 import { SaveProvider } from "./context/saveContexts";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -31,13 +32,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/cards/:id" element={<CardDetails />} />
-        <Route path="/favorites" element={<Favorite />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/upload"element={<Upload/>} />
-        <Route path="/profile"element={<ProfileGrid/>} />
+        <Route element={<ProtectedRoute/>}>
 
-
+          <Route path="/favorites" element={<Favorite />} />
+        
+          <Route path="/upload"element={<Upload/>} />
+          <Route path="/profile"element={<ProfileGrid/>} />
+        </Route>
       </Routes>
     </main>
       

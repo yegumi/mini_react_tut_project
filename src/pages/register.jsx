@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "../assets/css/register.css"
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+    const navigate = useNavigate()
     const [form, setForm] = useState(
         { name: "",
           username: "",
@@ -37,10 +39,12 @@ function Register() {
                 const data = await response.json();
                 setError(JSON.stringify(data));
                 return;
+
 }
                 
         const data = await response.json();
-        console.log("registered", data);} catch(err){
+        navigate("/login")
+    } catch(err){
             setError("sth went wrong, please try again")
             console.log(err)
         }
