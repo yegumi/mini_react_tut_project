@@ -8,7 +8,7 @@ function Register() {
           email: "",
           birthdate: "",
           password: "",
-          confirmPassword: ""
+          confirm_password: ""
         }
     );
     const [error, setError] = useState("");
@@ -18,17 +18,36 @@ function Register() {
         setForm({ ...form, [name]: value })
     }
 
-    function HandleSubmit(event) {
+    async function HandleSubmit(event) {
         event.preventDefault();
 
-        if (form.password !== form.confirmPassword) {
+        if (form.password !== form.confirm_password) {
             setError("Passwords don't match");
             return;
         }
 
         setError("");
         // continue with your actual submit logic here
+        try {
+            const response = await fetch("http://127.0.0.1:8000/api/auth/register/",{ method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(form)
+            })
+            if (!response.ok) {
+                const data = await response.json();
+                setError(JSON.stringify(data));
+                return;
+}
+                
+        const data = await response.json();
+        console.log("registered", data);} catch(err){
+            setError("sth went wrong, please try again")
+            console.log(err)
+        }
     }
+            
+
+    
 
     return (
         <div className="register-section">
@@ -67,7 +86,7 @@ function Register() {
 
                     <div className="field-group">
                         <label>Confirm password</label>
-                        <input type="password" name="confirmPassword" placeholder="confirm password" value={form.confirmPassword} onChange={HandleChange} />
+                        <input type="password" name="confirm_password" placeholder="confirm password" value={form.confirmPassword} onChange={HandleChange} />
                     </div>
 
                     {error && <p className="form-error">{error}</p>}
