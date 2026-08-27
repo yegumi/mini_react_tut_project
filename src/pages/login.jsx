@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 
-function Login(){
+function Login({setToken}){
     const navigate = useNavigate()
     const [error, setError]= useState("")
     const [form , setForm] = useState({
@@ -37,6 +37,7 @@ function Login(){
         const data = await response.json();
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
+        setToken(data.access);
 
         navigate("/");
 

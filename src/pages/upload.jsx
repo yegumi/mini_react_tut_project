@@ -1,12 +1,16 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import "../assets/css/upload.css"
 const allowedTypes = ["image/jpeg", "image/png", "image/svg+xml"];
+import { PostContext } from "../context/PostsContext";
 
 function Upload(){
+     const { AddCard } = useContext(PostContext);
     const fileInputRef = useRef(null)
     const [logo, setLogo] = useState(null);
     const [previewurl, setPreviewUrl] = useState(null);
     const [error, setError] = useState("");
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
     
 
     function HandleFileChange(event){
@@ -20,25 +24,45 @@ function Upload(){
         }
         setError("");
         setLogo(file);
-        setPreviewUrl(URL.createObjectURL(file));
-        setPreviewUrl(URL.createObjectURL(file));
-        console.log("preview url:", URL.createObjectURL(file));
+        const url = URL.createObjectURL(file);
+        setPreviewUrl(url);
+        console.log("preview url:", url);
     }
 
-    function HandleSubmit(event){
-        event.preventDefault();
-        if (!logo){
-            setError("please choose a file first");
-            return;
-        }
-        // no backend yet
-        setLogo(null);
-        setPreviewUrl(null);
-        setError("");
-        fileInputRef.current.value = "";
+    async function HandleSubmit(event) {
+    event.preventDefault();
 
-
+    if (!name.trim()) {
+        setError("please enter a name");
+        return;
     }
+
+    if (!description.trim()) {
+        setError("please enter a description");
+        return;
+    }
+
+    if (!logo) {
+        setError("please choose a file first");
+        return;
+    }
+
+    const result = await AddCard(name, description, logo);
+
+    if (!result.success) {
+        setError(JSON.stringify(result.error));
+        return;
+    }
+
+    // Only clear the form after successful upload
+    setName("");
+    setDescription("");
+    setLogo(null);
+    setPreviewUrl(null);
+    setError("");
+
+    fileInputRef.current.value = "";
+}
 
 
     return(
@@ -54,6 +78,18 @@ function Upload(){
                 onChange={HandleFileChange}/>
                     {error && <p className="form-error">{error}</p>}
                     {previewurl && <img src={previewurl} alt="preview" className="logo-preview" />}
+                    <input
+                        type="text"
+                        placeholder="Logo name"
+                        value={name}
+                        onChange={(event) => setName(event.target.value)}
+                    />
+
+                    <textarea
+                        placeholder="Description"
+                        value={description}
+                        onChange={(event) => setDescription(event.target.value)}
+                    />
                 <button type="submit">upload</button>
             </form>
                 

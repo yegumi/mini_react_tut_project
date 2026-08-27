@@ -3,12 +3,18 @@ import { useContext } from "react";
 import { PostContext } from "../context/PostsContext";
 import "../assets/css/profile.css"
 
+
+
+
 function ProfileGrid(){
-    const {cards, ToggleLike, likedCardIds} = useContext(PostContext);
-    const adminPosts = cards.filter((card)=> card.user ==="admin");
+    const {cards, ToggleLike, likedCardIds, userId} = useContext(PostContext);
+    const myCards = cards.filter(
+    (card) => Number(card.user_id) === Number(userId)
+);
+
     return (
         <div className="post-grid">
-            {adminPosts.map((card)=>(
+            {myCards.map((card)=>(
                 <div key={card.id} className="post-thumb">
                 <Link  to={`/cards/${card.id}`} >
                     <img src={card.image} alt={card.name}/>
