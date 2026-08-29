@@ -3,14 +3,21 @@ import { createContext, useState, useEffect} from "react";
 
 export const PostContext = createContext();
 
+function decodeToken(token) {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(atob(base64));
+}
+
 export function PostProvider({children, token}){
     const [cards, setCards] = useState([]);
     const [likedCardIds, setLikeCardIds] = useState([]);
     let userId = null;
 
     if (token) {
-        const payload = JSON.parse(atob(token.split(".")[1]));
-        userId = Number(payload.user_id);}
+        const payload = decodeToken(token);
+         userId = Number(payload.user_id);
+    }
 
     useEffect(() => {
     async function fetchCards() {

@@ -15,6 +15,7 @@ import ProfileGrid from "./pages/profile";
 import { PostProvider } from "./context/PostsContext";
 import { SaveProvider } from "./context/saveContexts";
 import ProtectedRoute from "./components/ProtectedRoute";
+import EditProfile from "./pages/editProfile";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("accessToken"))
@@ -41,6 +42,8 @@ function App() {
         
           <Route path="/upload"element={<Upload/>} />
           <Route path="/profile"element={<ProfileGrid/>} />
+          <Route path="/profile/edit"element={<EditProfile token={token}/>} />
+
         </Route>
       </Routes>
     </main>

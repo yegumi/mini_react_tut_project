@@ -62,3 +62,50 @@
         grid-template-columns: 1fr;
     }
 }
+
+.profile-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 24px 40px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.profile-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 500;
+    margin: 0;
+}
+
+.edit-profile-button {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #B03A6F, #8f2e5a);
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.edit-profile-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(176, 58, 111, 0.3);
+}
+
+@media (max-width: 500px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
